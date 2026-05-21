@@ -4,8 +4,9 @@ from rb.dev.phototransistor import Phototransistor
 
 
 def lamp():
-    pt = Phototransistor(0)
-    strip = LEDStrip(1, 5, 0)
+    strip = LEDStrip(0, 5, 0)
+    pt = Phototransistor(1)
+    
     c = [255, 140, 50]
     on = 0.2
     off = 0.3
@@ -22,10 +23,20 @@ def lamp():
         else:
             changed = False
 
-        if changed:
+        if not changed:
+            time.sleep(1)
+        else:
             for i in range(fade_steps + 1):
                 strip.brightness_step()
                 strip.set_mono(strip.fade(c))
                 time.sleep(1 / 60)
+
+
+def calibrate():
+    pt = Phototransistor(1)
+    while True:
+        print(pt.read())
+        time.sleep(1/5)
+
 
 lamp()

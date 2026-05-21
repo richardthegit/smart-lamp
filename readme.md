@@ -14,9 +14,9 @@ Three components are required:
 
 ## Phototransistor
 
-Connect the collector (shorted leg) to **+3.3v**, and the emitter to ADC pin **GPIO 0** and **GND** via the resistor for pull-down.
+Connect the collector (shorted leg) to **+3.3v**, and the emitter to ADC pin **GPIO 1** and **GND** via the resistor for pull-down.
 
 ## LED Strip
 
-Power may come from the C3 using the **+5v** and **GND**. Control wire should connect to **GPIO 1**.
+Power may come from the C3 using the **+5v** and **GND**. Control wire should connect to **GPIO 0**.
 
