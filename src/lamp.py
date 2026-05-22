@@ -24,10 +24,10 @@ def lamp():
         val = pt.read_raw()
         changed = True
 
-        if val <= on and not lit:
+        if not lit and val <= on:
             strip.brightness_target(1, fade_steps)
             lit = True
-        elif val >= off and lit:
+        elif lit and val >= off:
             strip.brightness_target(0, fade_steps)
             lit = False
         else:
@@ -39,7 +39,7 @@ def lamp():
             else:
                 time.sleep(1)
         else:
-            rt.info('Light changed to: {"on" if lit else "off"}')
+            rt.info(f'Light changed to: {"on" if lit else "off"}')
             for i in range(fade_steps + 1):
                 strip.brightness_step()
                 strip.set_mono(strip.fade(c))
